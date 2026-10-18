@@ -6,12 +6,12 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
--- Please dont kill me
+-- Please dont execute  me
 vim.keymap.set("i", "<C-c", "<Esc>")
 
--- Move lines up and down
+-- Move selected lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Change the word that I'm on and every other instance of it with what you want
+-- Modify the word that I'm on and every other instance of it with what you want
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

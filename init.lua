@@ -24,3 +24,59 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require("adrien")
 vim.lsp.enable("emmet_language_server")
+
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
+
+local bg = "#1e1e1e"
+
+local groups = {
+  -- Core editor
+  "Normal",
+  "NormalFloat",
+  "NormalNC",
+  "EndOfBuffer",
+  "NonText",
+  "SignColumn",
+  "FoldColumn",
+  "MsgArea",
+  "FloatBorder",
+  "FloatTitle",
+  "FloatFooter",
+  -- Telescope
+  "TelescopeNormal",
+  "TelescopeBorder",
+  "TelescopePromptNormal",
+  "TelescopePromptBorder",
+  "TelescopeResultsNormal",
+  "TelescopeResultsBorder",
+  "TelescopePreviewNormal",
+  "TelescopePreviewBorder",
+  "TelescopeTitle",
+  "TelescopePromptTitle",
+  "TelescopeResultsTitle",
+  "TelescopePreviewTitle",
+  -- Other common UI backgrounds (statusline intentionally excluded)
+  "Pmenu",
+  "PmenuSbar",
+  "TabLine",
+  "TabLineFill",
+  "WinBar",
+  "WinBarNC",
+}
+
+local function apply_bg()
+  for _, group in ipairs(groups) do
+    -- Force exact hex background (updates only bg, keeps fg/etc.)
+    vim.cmd("highlight " .. group .. " guibg=" .. bg)
+  end
+end
+
+-- Re-apply after any colorscheme
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = apply_bg,
+})
+
+-- Apply now
+apply_bg()

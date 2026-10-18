@@ -16,8 +16,11 @@ return require("packer").startup(function(use)
 
   -- Colorschemes
   use({
-    "rose-pine/neovim",
-    as = "rose-pine",
+	  "rose-pine/neovim",
+	  as = "rose-pine",
+	  config = function()
+		  vim.cmd("colorscheme rose-pine")
+	  end
   })
 
   use("craftzdog/solarized-osaka.nvim")
